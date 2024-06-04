@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+:root{
+  /* ## Colors */
+  --black: #252525;
+  --white: #FAFAFA;
+  /* ### Primary */
+  --Orange: hsl(26, 100%, 55%);
+  --PaleOrange: hsl(25, 100%, 94%);
+
+  /* ### Neutral */
+  --VeryDarkBlue: hsl(220, 13%, 13%);
+  --DarkGrayishBlue: hsl(219, 9%, 45%);
+  --GrayishBlue: hsl(220, 14%, 75%);
+  --LightGrayishBlue: hsl(223, 64%, 98%);
+
+  --ff: "Kumbh Sans", sans-serif;
+  --h1: bold 54px/64px var(--ff);
+  --h2: bold 36px/36px var(--ff);
+  --h3: bold 24px/30px var(--ff);
+  --links: bold 18px/18px var(--ff);
+  --p: 18px/30px var(--ff);
+  --subtext: 12px/20px var(--ff);
+  --transition: 0.3s ease-in-out;
+  --shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);;
+  --radius-xs: 7px;
+
+  /* Fonts sizes */
+  --step--3: clamp(0.5064rem, 0.4821rem + 0.1211vi, 0.576rem);
+  --step--2: clamp(0.6076rem, 0.5686rem + 0.1954vi, 0.72rem);
+  --step--1: clamp(0.7292rem, 0.6697rem + 0.2971vi, 0.9rem);
+  --step-0: clamp(0.875rem, 0.788rem + 0.4348vi, 1.125rem);
+  --step-1: clamp(1.05rem, 0.9261rem + 0.6196vi, 1.4063rem);
+  --step-2: clamp(1.26rem, 1.0868rem + 0.8658vi, 1.7578rem);
+  --step-3: clamp(1.512rem, 1.2736rem + 1.1918vi, 2.1973rem);
+  --step-4: clamp(1.8144rem, 1.4902rem + 1.6212vi, 2.7466rem);
+  --step-5: clamp(2.1773rem, 1.7404rem + 2.1843vi, 3.4332rem);
+  --step-6: clamp(2.6127rem, 2.0288rem + 2.9196vi, 4.2915rem);
+}
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+*{
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+body{
+  font-size: var(--p);
+  font-family: var(--ff);
+  min-height: 100vh;
+  background-color: var(--white);
+}
+img, picture, svg, video{
+  display: block;
+  max-width: 100%;
+}
+input, textarea, button, select{
+  font: inherit;
+}
+h1{
+  font: var(--h1);
+  font-size: var(--step-5);
+  margin-block: 1rem;
+}
+h2{
+  font: var(--h2);
+  margin-block: .7rem;
+}
+h3{
+  font: var(--h3);
+  margin-block: .5rem;  
+}
+:is(h1, h2, h3){
+  text-wrap: balance;
+}
+p{
+  font: var(--p);
+  margin-bottom: .5rem;
+  text-wrap: pretty;
+}
+/* Utilidades */
+.links{
+  font: var(--links);
+  margin-top: 8px;
+}
+.subtext{
+  font: var(--subtext);
+  margin-top: -8px;
+}
+:is(.swiper-button-prev, .swiper-button-next){
+  color: var(--Orange);
+}
+:is(.swiper-pagination-bullet-active){
+  background-color: var(--Orange);
+}
+.grid-responsive{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(300px, 100%), 1fr));
+  gap: 1.5rem 2rem;
+}
+.section{
+  padding-block: 5rem;
+}
+/* Desktop container utility class: */
+.container {
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+/* 2xl */
+@media (max-width: 1536px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+/* xl */
+@media (max-width: 1280px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+/* lg */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 768px;
+  }
+}
+/* md */
+@media (max-width: 768px) {
+  .container {
+    max-width: 640px;
+  }
+}
+/* sm */
+@media (max-width: 640px) {
+  .container {
+    max-width: 475px;
+  }
+}
+/* xs */
+@media (max-width: 475px) {
+  .container {
+    width: 100%;
+  }
+}

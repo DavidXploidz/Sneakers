@@ -1,0 +1,20 @@
+.banner{
+    background-color: var(--LightGrayishBlue);
+    min-height: 100px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 2rem;
+    text-align: center;
+    padding-inline: 1rem;
+}
+.banner--women{
+    color: #a3115a;
+    background-color: #fdcded;
+}
+.banner--men{
+    background-color: #cef8ff;
+    color: #144a65;
+}
+.banner__title{
+    font-size: var(--step-3);
+}

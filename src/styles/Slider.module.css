@@ -1,0 +1,25 @@
+.sliderContainer{
+    min-height: calc(100dvh - 90px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(min(300px, 100%), 1fr));
+    align-items: center;
+    background-color: white;
+}
+.sliderContainer :is(img){
+    max-height: 30rem;
+}
+.sliderContent{
+    padding-inline: min(3vw, 6rem);
+}
+.sliderContent :is(.title, .price){
+    color: var(--VeryDarkBlue);
+    font-weight: bold;
+}
+.price{
+    margin-top: 3rem;
+    text-align: right;
+    font-size: var(--step-3);
+}
+.overlay{
+    border-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6)) fill 1;
+}

@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 // import Swiper core and required modules
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 
@@ -10,28 +9,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import classes from '../styles/Slider.module.css';
 import Spinner from './Spinner';
+import useSneakers from '../hooks/useSneakers'
 
 function Slider() {
-    const [products, setProducts] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-
-    useEffect(() => {
-        consultarApi()
-    },[])
-
-    const consultarApi = async () => {
-        const url = 'https://api.stockx.vlour.me/search?query=Shoes';
-        try {
-            setIsLoading(true)
-            const response = await fetch(url);
-            const resultado = await response.json();
-            const data = resultado.hits.slice(0, 5);
-            setProducts(data);
-            setIsLoading(false)
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const { products, isLoading } = useSneakers()
 
   return (
     <Swiper
@@ -45,7 +26,7 @@ function Slider() {
         onSlideChange={() => console.log('slide change')}
         >
         {isLoading ? <Spinner /> : (
-            products.map(product => (
+            products.slice(6,12).map(product => (
                 <SwiperSlide key={product.id}>
                     <div className={classes.sliderContainer}>
                         <div className={classes.sliderContent}>

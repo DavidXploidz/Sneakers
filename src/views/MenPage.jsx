@@ -5,6 +5,7 @@ import Spinner from "../components/Spinner"
 
 export default function MenPage() {
     const [products, setProducts] = useState([])
+    const [cart, setCart] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
@@ -24,6 +25,10 @@ export default function MenPage() {
         }
     }
 
+    function addToCart(product){
+        setCart(prevCart => [...prevCart, product])
+    }
+
   return (
     <div>
         <Banner bg={'banner--men'} title={'Man Up: Unleash Your Style Potential'} />
@@ -32,7 +37,7 @@ export default function MenPage() {
                 {isLoading ? <Spinner /> : (
                     products.map(product => {
                         return (
-                            <CardProduct key={product.id} product={product} />
+                            <CardProduct key={product.id} product={product} addToCart={addToCart} />
                         )
                     })
                 )}

@@ -4,6 +4,8 @@
   /* ## Colors */
   --black: #252525;
   --white: #FAFAFA;
+  --red: #eb2f06;
+  --blue: #2980b9;
   /* ### Primary */
   --Orange: hsl(26, 100%, 55%);
   --PaleOrange: hsl(25, 100%, 94%);
@@ -13,6 +15,7 @@
   --DarkGrayishBlue: hsl(219, 9%, 45%);
   --GrayishBlue: hsl(220, 14%, 75%);
   --LightGrayishBlue: hsl(223, 64%, 98%);
+  --Gray: #e4e6e9;
 
   --ff: "Kumbh Sans", sans-serif;
   --h1: bold 54px/64px var(--ff);
@@ -82,6 +85,13 @@ p{
   font: var(--p);
   margin-bottom: .5rem;
   text-wrap: pretty;
+}
+hr{
+  background-color: var(--VeryDarkBlue);
+  border-radius: 100vw;
+  border: none;
+  height: 0.5px;
+  margin-block: 1rem;
 }
 /* Utilidades */
 .links{

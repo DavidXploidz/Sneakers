@@ -11,9 +11,8 @@
     row-gap: 1rem;
 }
 .card__img{
-    max-height: 185px;
+    outline: 2px dashed var(--PaleOrange);
     margin-inline: auto;
-    aspect-ratio: 1 / 1;
     width: 100%;
 }
 .card__title{

@@ -1,6 +1,6 @@
 .grid{
     display: grid;
-    grid-template-columns: 45% 55%;
+    grid-template-columns: repeat(auto-fit,minmax(min(250px, 100%), 1fr));
     gap: 2rem;
 }
 .product__content{
@@ -34,14 +34,14 @@
     margin-block-start: auto;
     gap: 1rem;
 }
-.product__bottom :is(.counter){
-    display: flex;
-    flex-basis: 280px;
+.product__bottom > *{
+    flex: 1;
 }
 .counter{
     background-color: #f2f2f2;
     border-radius: var(--radius-xs);
     display: flex;
+    flex: 1;
 }
 .counter :is(button, p){
     background-color: transparent;
@@ -51,4 +51,12 @@
     height: 100%;
     display: grid;
     place-items: center;
+}
+@media (max-width: 500px){ 
+    .product__bottom{
+        flex-direction: column;
+    }
+    .counter :is(button, p){
+        height: auto;
+    }
 }

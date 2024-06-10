@@ -54,6 +54,7 @@
     margin-inline: auto;
     flex-basis: 130px;
     flex-shrink: 0;
+    outline: 2px dashed var(--PaleOrange);
 }
 .cart__item .space{
     display: flex;

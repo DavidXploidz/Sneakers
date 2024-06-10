@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import Banner from "../components/Banner"
 import CardProduct from "../components/CardProduct"
 import Spinner from "../components/Spinner"
+import useSneakers from '../hooks/useSneakers'
 
 export default function MenPage() {
     const [products, setProducts] = useState([])
-    const [cart, setCart] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const { addToCart } = useSneakers()
 
     useEffect(() => {
         getDataApi()
@@ -23,10 +24,6 @@ export default function MenPage() {
         } catch (error) {
             console.log(error);
         }
-    }
-
-    function addToCart(product){
-        setCart(prevCart => [...prevCart, product])
     }
 
   return (

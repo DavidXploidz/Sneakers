@@ -2,8 +2,13 @@ import React from 'react'
 import logo from '../assets/svg/logo.svg'
 import classes from '../styles/Header.module.css'
 import { NavLink } from 'react-router-dom'
+import useSneakers from '../hooks/useSneakers'
 
 function Header() {
+
+  const { cart } = useSneakers()
+  const items = cart.length;
+
   return (
     <header className={classes.header}>
       <div className={`${classes.header__content} container`}>
@@ -13,7 +18,7 @@ function Header() {
           <NavLink to="/men" className={({isActive}) => isActive ? classes.active : ''}>Men</NavLink>
           <NavLink to="/women" className={({isActive}) => isActive ? classes.active : ''}>Women</NavLink>
           <NavLink to="/about" className={({isActive}) => isActive ? classes.active : ''}>About</NavLink>
-          <NavLink to="/cart" className={({isActive}) => isActive ? classes.active : ''}>Cart</NavLink>
+          <NavLink to="/cart" className={({isActive}) => isActive ? classes.active : ''}><span className={classes.header__cart} data-label={items ? items : ''}><i className='bx bx-cart'></i></span> Cart</NavLink>
         </nav>
       </div>
     </header>

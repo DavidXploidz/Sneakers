@@ -1,46 +1,44 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import cart from '../assets/svg/cart.svg'
+import cartBg from '../assets/svg/cart.svg'
 import classes from '../styles/Cart.module.css'
 import buttons from '../styles/Button.module.css'
+import useSneakers from '../hooks/useSneakers'
 
 export default function CartPage() {
 
-  const [empty, setEmpty] = useState(false)
-  const [localCart, setLocalCart] = useState([])
+  const { cart, setCart } = useSneakers()
+
+  // State derivado
+  const isEmpty = cart.length <= 0;
 
   useEffect(() => {
     const recoverCart = JSON.parse(localStorage.getItem('sneakers-cart'))
     if(recoverCart === null || recoverCart.length <= 0){
-      setEmpty(true)
     }else{
-      setEmpty(false)
-      setLocalCart(recoverCart)
+      setCart(recoverCart)
     }
-  }, [localCart])
-
+  }, [])
 
   const handleClickDelete = (id) => {
-    const newArray = localCart.filter(item => item.id !== id);
-    setLocalCart(newArray)
+    const newArray = cart.filter(item => item.id !== id);
+    setCart(newArray)
     localStorage.setItem('sneakers-cart', JSON.stringify(newArray));
   }
 
-  // const cartTotal = () => localCart.reduce((total, item ) => total + (item.quantity * item.base_price), 0)
-
-  const cartTotal = useMemo(() => localCart.reduce((total, item ) => total + (item.quantity * item.base_price), 0), [localCart])
+  const cartTotal = useMemo(() => cart.reduce((total, item ) => total + (item.quantity * item.base_price), 0), [cart])
 
   return (
     <div className='container'>
       <div className={classes.cart}>
         <h1 className={classes.cart__title}>
-          {empty ? 'Your cart is empty!' : 'Your cart'}
+          {isEmpty ? 'Your cart is empty!' : 'Your cart'}
         </h1>
-        {empty ? (
-          <img className={classes.cart__bg} src={cart} alt="Image cart" />
+        {isEmpty ? (
+          <img className={classes.cart__bg} src={cartBg} alt="Image cart" />
         ): (
           <div className={classes.cart__box}>
             <div className={classes.cart__resume}>
-              {localCart.map(item => (
+              {cart.map(item => (
                 <article className={classes.cart__item} key={item.id}>
                   <figure>
                     <img src={item.image} alt={`Image product ${item.title}`} />

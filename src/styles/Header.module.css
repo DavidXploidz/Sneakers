@@ -20,3 +20,14 @@
 .header__nav .active{
     color: var(--Orange);
 }
+.header__cart{
+    position: relative;
+}
+.header__cart::after{
+    content: attr(data-label);
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 12px;
+}

@@ -1,5 +1,6 @@
 import classes from '../styles/CardProduct.module.css'
 import ImageComponent from './ImageComponent'
+import { Link } from 'react-router-dom'
 
 function CardProduct({ product, addToCart }) {
 
@@ -7,9 +8,9 @@ function CardProduct({ product, addToCart }) {
 
   return (
     <article className={classes.card} >
-      <a href={`product/${id}`} >
+      <Link to={`/product/${id}`}>
         <ImageComponent src={image} />
-      </a>
+      </Link>
       <h3 className={classes.card__title}>{title}</h3>
       <div className={classes.card__bottom}>
         <p className={classes.card__price}>{base_price} {currency}</p>

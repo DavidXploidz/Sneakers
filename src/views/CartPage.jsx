@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import cartBg from '../assets/svg/cart.svg'
 import classes from '../styles/Cart.module.css'
 import buttons from '../styles/Button.module.css'
@@ -11,14 +11,6 @@ export default function CartPage() {
   // State derivado
   const isEmpty = cart.length <= 0;
 
-  useEffect(() => {
-    const recoverCart = JSON.parse(localStorage.getItem('sneakers-cart'))
-    if(recoverCart === null || recoverCart.length <= 0){
-    }else{
-      setCart(recoverCart)
-    }
-  }, [])
-
   const handleClickDelete = (id) => {
     const newArray = cart.filter(item => item.id !== id);
     setCart(newArray)
@@ -28,7 +20,7 @@ export default function CartPage() {
   const cartTotal = useMemo(() => cart.reduce((total, item ) => total + (item.quantity * item.base_price), 0), [cart])
 
   return (
-    <div className='container'>
+    <div className='container section'>
       <div className={classes.cart}>
         <h1 className={classes.cart__title}>
           {isEmpty ? 'Your cart is empty!' : 'Your cart'}

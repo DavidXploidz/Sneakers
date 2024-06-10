@@ -15,7 +15,7 @@
   --DarkGrayishBlue: hsl(219, 9%, 45%);
   --GrayishBlue: hsl(220, 14%, 75%);
   --LightGrayishBlue: hsl(223, 64%, 98%);
-  --Gray: #e4e6e9;
+  --Gray: #f2f2f2;
 
   --ff: "Kumbh Sans", sans-serif;
   --h1: bold 54px/64px var(--ff);
@@ -114,7 +114,7 @@ hr{
   gap: 1.5rem 2rem;
 }
 .section{
-  padding-block: 5rem;
+  padding-block: min(4vw, 5rem);
 }
 /* Desktop container utility class: */
 .container {

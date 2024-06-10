@@ -10,6 +10,7 @@ const SneakersProvider = ({children}) => {
 
     useEffect(() => {
         consultarApi()
+        getItemsCart()
     },[])
 
     const consultarApi = async () => {
@@ -26,15 +27,29 @@ const SneakersProvider = ({children}) => {
         }
     }
 
-    function addToCart(product) {
-        product.quantity = 1;
-        const elementExists = cart.findIndex(item => item.id === product.id);
-        const updatedCart = elementExists >= 0
-          ? [...cart].map(item => (item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item))
-          : [product, ...cart];
-      
-        setCart(updatedCart);
+    function addToCart(product, count = 1) {
+        const updatedProduct = { ...product, quantity: count };
+        const elementIndex = cart.findIndex(item => item.id === product.id);
+    
+        let updatedCart;
+        if (elementIndex >= 0) {
+            updatedCart = cart.map(item => 
+                item.id === product.id 
+                    ? { ...item, quantity: item.quantity + count } 
+                    : item
+            );
+        } else {
+            updatedCart = [updatedProduct, ...cart];
+        }
+    
         localStorage.setItem('sneakers-cart', JSON.stringify(updatedCart));
+        setCart(updatedCart);
+    }
+
+    function getItemsCart(){
+        const recoverCart = JSON.parse(localStorage.getItem('sneakers-cart'))
+        if(recoverCart === null || recoverCart.length <= 0) return
+        setCart(recoverCart)
     }
 
 
@@ -43,9 +58,10 @@ const SneakersProvider = ({children}) => {
             value={{
                 products,
                 isLoading,
+                setIsLoading,
                 addToCart,
                 cart,
-                setCart
+                setCart,
             }} 
         >
             {children}

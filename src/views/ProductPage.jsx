@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react';
 import classes from '../styles/Product.module.css'
 import Spinner from '../components/Spinner'
 import classesBtn from '../styles/Button.module.css'
+import useSneakers from '../hooks/useSneakers'
 
 export default function Product() {
     const { id } = useParams();
-
     const [product, setProduct] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
+
+    const { isLoading, setIsLoading, addToCart } = useSneakers()
 
     useEffect(() => {
         getDataApi()
@@ -51,7 +52,7 @@ export default function Product() {
                             <p>{count}</p>
                             <button onClick={() => setCount(count + 1)}><img src="/src/assets/svg/plus_icon.svg" alt="icon plus" /></button>
                         </div>
-                        <button className={classesBtn.button}>Add to Cart</button>
+                        <button className={classesBtn.button} onClick={() => { addToCart(product, count), setCount(1) }}>Add to Cart</button>
                     </div>
                 </section>
             </div>

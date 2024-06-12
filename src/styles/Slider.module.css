@@ -1,7 +1,7 @@
 .sliderContainer{
     min-height: calc(100dvh - 90px);
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(min(300px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit,minmax(min(350px, 100%), 1fr));
     align-items: center;
     background-color: white;
 }

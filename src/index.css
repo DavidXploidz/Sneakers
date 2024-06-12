@@ -20,9 +20,9 @@
 
   --ff: "Kumbh Sans", sans-serif;
   --ff-alt: "Open Sans", sans-serif;
-  --h1: bold 54px/64px var(--ff-alt);
-  --h2: bold 36px/36px var(--ff-alt);
-  --h3: bold 24px/30px var(--ff-alt);
+  --h1: bold 54px var(--ff-alt);
+  --h2: bold 36px var(--ff-alt);
+  --h3: bold 24px var(--ff-alt);
   --links: bold 18px/18px var(--ff);
   --p: 18px/30px var(--ff);
   --subtext: 12px/20px var(--ff);
@@ -112,7 +112,7 @@ hr{
 }
 .grid-responsive{
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(min(300px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(min(350px, 100%), 1fr));
   gap: 1.5rem 2rem;
 }
 .section{

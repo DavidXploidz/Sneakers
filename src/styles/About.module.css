@@ -1,34 +1,22 @@
 .about{
-    background-color: var(--GrayishBlue);
+    background-color: var(--LightGrayishBlue);
     color: var(--VeryDarkBlue);
-    min-height: calc(100dvh - 90px);
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
 }
 .about__main{
-    flex-grow: 9999;
-    flex-basis: 500px;
     padding-inline: min(2vw, 2rem);
     align-self: center;
-}
-.about__right{
-    flex-grow: 1;
-    flex-basis: 400px;
-    background-image: url('../assets/images/about.webp');
-    background-position: right top;
-    background-size: cover;
 }
 .about__title{
     font-size: var(--step-6);
     color: var(--VeryDarkBlue);
+    text-shadow: 3px 3px 2px var(--Orange);
     font-family: var(--ff-alt);
     margin-top: 3rem;
 }
 .about__text{
     font-size: var(--step-1);
-}
-.about__figure{
-    max-width: 20rem;
 }
 .about__figure img{
     aspect-ratio: 3 / 2;

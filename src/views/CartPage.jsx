@@ -5,10 +5,11 @@ import buttons from '../styles/Button.module.css'
 import useSneakers from '../hooks/useSneakers'
 import ImageComponent from '../components/ImageComponent'
 import QuantityCounter from '../components/QuantityCounter'
+import { toast } from 'react-toastify';
 
 export default function CartPage() {
 
-  const { cart, setCart, getItemsCart } = useSneakers()
+  const { cart, setCart } = useSneakers()
 
   const [edit, setEdit] = useState({})
   const [count, setCount] = useState(1);
@@ -20,6 +21,16 @@ export default function CartPage() {
     const newArray = cart.filter(item => item.id !== id);
     setCart(newArray)
     localStorage.setItem('sneakers-cart', JSON.stringify(newArray));
+    toast.error('Item deleted from Cart', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   }
 
   const handleClickEdit = (id, quantity) => {
@@ -38,6 +49,16 @@ export default function CartPage() {
     setCart(updatedCart);
     localStorage.setItem('sneakers-cart', JSON.stringify(updatedCart));
     setEdit({})
+    toast.info('Updated Quantity', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   }
 
   const cartTotal = useMemo(() => cart.reduce((total, item ) => total + (item.quantity * item.base_price), 0), [cart])

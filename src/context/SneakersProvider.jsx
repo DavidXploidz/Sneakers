@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { toast } from 'react-toastify';
 
 const SneakersContext = createContext()
 
@@ -44,6 +45,16 @@ const SneakersProvider = ({children}) => {
     
         localStorage.setItem('sneakers-cart', JSON.stringify(updatedCart));
         setCart(updatedCart);
+        toast.success('Added to Cart', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
     }
 
     function getItemsCart(){
@@ -62,7 +73,6 @@ const SneakersProvider = ({children}) => {
                 addToCart,
                 cart,
                 setCart,
-                getItemsCart
             }} 
         >
             {children}

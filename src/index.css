@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Shojumaru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 :root{
   /* ## Colors */
   --black: #252525;
@@ -19,10 +19,10 @@
   --Gray: #f2f2f2;
 
   --ff: "Kumbh Sans", sans-serif;
-  --ff-alt: "Shojumaru", system-ui;
-  --h1: bold 54px/64px var(--ff);
-  --h2: bold 36px/36px var(--ff);
-  --h3: bold 24px/30px var(--ff);
+  --ff-alt: "Open Sans", sans-serif;
+  --h1: bold 54px/64px var(--ff-alt);
+  --h2: bold 36px/36px var(--ff-alt);
+  --h3: bold 24px/30px var(--ff-alt);
   --links: bold 18px/18px var(--ff);
   --p: 18px/30px var(--ff);
   --subtext: 12px/20px var(--ff);

@@ -6,7 +6,7 @@
     font-size: var(--step-0);
     border-radius: var(--radius-xs);
     padding: .5rem .725rem;
-    transition: background-color 80ms ease-in;
+    transition: background-color var(--transition);
     width: 100%;
 }
 .button:hover{

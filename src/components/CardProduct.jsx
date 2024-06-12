@@ -9,7 +9,7 @@ function CardProduct({ product, addToCart }) {
   return (
     <article className={classes.card} >
       <Link to={`/product/${id}`}>
-        <ImageComponent src={image} />
+        <ImageComponent src={image} width={300} height={185} />
       </Link>
       <h3 className={classes.card__title}>{title}</h3>
       <div className={classes.card__bottom}>

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import logo from '../assets/svg/logo.svg'
 import classes from '../styles/Header.module.css'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import useSneakers from '../hooks/useSneakers'
 
 function Header() {
@@ -15,7 +15,7 @@ function Header() {
   return (
     <header className={classes.header}>
       <div className={`${classes.header__content} container`}>
-        <img src={logo} alt="logo icon" />
+        <Link to="/"><img src={logo} alt="logo icon" /></Link>
         <nav className={classes.header__nav}>
           <NavLink to="/" className={({isActive}) => isActive ? classes.active : ''}>Home</NavLink>
           <NavLink to="/men" className={({isActive}) => isActive ? classes.active : ''}>Men</NavLink>

@@ -1,12 +1,17 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import cartBg from '../assets/svg/cart.svg'
 import classes from '../styles/Cart.module.css'
 import buttons from '../styles/Button.module.css'
 import useSneakers from '../hooks/useSneakers'
+import ImageComponent from '../components/ImageComponent'
+import QuantityCounter from '../components/QuantityCounter'
 
 export default function CartPage() {
 
-  const { cart, setCart } = useSneakers()
+  const { cart, setCart, getItemsCart } = useSneakers()
+
+  const [edit, setEdit] = useState({})
+  const [count, setCount] = useState(1);
 
   // State derivado
   const isEmpty = cart.length <= 0;
@@ -15,6 +20,24 @@ export default function CartPage() {
     const newArray = cart.filter(item => item.id !== id);
     setCart(newArray)
     localStorage.setItem('sneakers-cart', JSON.stringify(newArray));
+  }
+
+  const handleClickEdit = (id, quantity) => {
+    setEdit({editing: id})
+    setCount(quantity)
+  }
+
+  const handleClickUpdate = (id) => {
+    const updatedCart = cart.map(item => {
+      if (item.id === id) {
+        return { ...item, quantity: count }; // Cantidad actualizada
+      } else {
+        return item;
+      }
+    });
+    setCart(updatedCart);
+    localStorage.setItem('sneakers-cart', JSON.stringify(updatedCart));
+    setEdit({})
   }
 
   const cartTotal = useMemo(() => cart.reduce((total, item ) => total + (item.quantity * item.base_price), 0), [cart])
@@ -33,14 +56,24 @@ export default function CartPage() {
               {cart.map(item => (
                 <article className={classes.cart__item} key={item.id}>
                   <figure>
-                    <img src={item.image} alt={`Image product ${item.title}`} />
+                    <ImageComponent src={item.image} width={130} height={100}  />
                   </figure>
                   <section>
                     <p className={classes.title}>{item.title}</p>
                     <div className={classes.space}>
-                      <p className={classes.price}>$ {item.base_price} <span className={classes.quantity}>x {item.quantity}</span></p>
+                      {edit.editing === item.id ? (
+                        <>
+                          <QuantityCounter count={count} setCount={setCount} />
+                        </>
+                      ) : (
+                        <p className={classes.price}>$ {item.base_price} <span className={classes.quantity}>x {item.quantity}</span></p>
+                      )}
                       <div className={classes.buttons}>
-                        <button className={classes.edit}><i className='bx bx-edit'></i></button>
+                      {edit.editing === item.id ? (
+                        <button className={classes.save} onClick={() => handleClickUpdate(item.id) }><i className='bx bx-save'></i></button>
+                      ): (
+                        <button className={classes.edit} onClick={() => handleClickEdit(item.id, item.quantity) }><i className='bx bx-edit'></i></button>
+                      )}
                         <button className={classes.delete} onClick={() => handleClickDelete(item.id)}><i className='bx bx-trash'></i></button>
                       </div>
                     </div>

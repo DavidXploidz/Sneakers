@@ -62,6 +62,7 @@ const SneakersProvider = ({children}) => {
                 addToCart,
                 cart,
                 setCart,
+                getItemsCart
             }} 
         >
             {children}

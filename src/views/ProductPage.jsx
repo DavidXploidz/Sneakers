@@ -4,6 +4,7 @@ import classes from '../styles/Product.module.css'
 import Spinner from '../components/Spinner'
 import classesBtn from '../styles/Button.module.css'
 import useSneakers from '../hooks/useSneakers'
+import QuantityCounter from '../components/QuantityCounter';
 
 export default function Product() {
     const { id } = useParams();
@@ -29,11 +30,6 @@ export default function Product() {
         }
     }
 
-    const decrementCount = () => {
-        const newCount = count <= 0 ? 0 : count - 1;
-        setCount(newCount);      
-    };
-
   return (
     <div className='container'>
         {isLoading ? <Spinner /> : ( 
@@ -47,11 +43,7 @@ export default function Product() {
                     <p className={classes.product__description}>{product?.description}</p>
                     <p className={classes.product__price}>{product?.base_price} <span>{product?.currency}</span></p>
                     <div className={classes.product__bottom}>
-                        <div className={classes.counter}>
-                            <button onClick={() => decrementCount()}><img src="/src/assets/svg/minus_icon.svg" alt="icon minus" /></button>
-                            <p>{count}</p>
-                            <button onClick={() => setCount(count + 1)}><img src="/src/assets/svg/plus_icon.svg" alt="icon plus" /></button>
-                        </div>
+                        <QuantityCounter count={count} setCount={setCount} />
                         <button className={classesBtn.button} onClick={() => { addToCart(product, count), setCount(1) }}>Add to Cart</button>
                     </div>
                 </section>

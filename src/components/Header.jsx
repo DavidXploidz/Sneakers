@@ -17,9 +17,9 @@ function Header() {
   const handleClickMenu = () => {
     setMenu(!menu)
     if (!menu) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflowY = 'hidden';
     } else {
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflowY = 'scroll';
     }
   }
 
@@ -29,11 +29,11 @@ function Header() {
         <Link to="/"><img src={logo} alt="logo icon" /></Link>
         <div type="button" onClick={ handleClickMenu } className={classes.header__ham}><i className={`bx bx-${menu ? 'x' : 'menu'}`}></i></div>
         <nav className={`${classes.header__nav} ${menu && classes['header__nav--active']}`}>
-          <NavLink onClick={ handleClickMenu } to="/" className={({isActive}) => isActive ? classes.active : ''}>Home</NavLink>
-          <NavLink onClick={ handleClickMenu } to="/men" className={({isActive}) => isActive ? classes.active : ''}>Men</NavLink>
-          <NavLink onClick={ handleClickMenu } to="/women" className={({isActive}) => isActive ? classes.active : ''}>Women</NavLink>
-          <NavLink onClick={ handleClickMenu } to="/about" className={({isActive}) => isActive ? classes.active : ''}>About</NavLink>
-          <NavLink onClick={ handleClickMenu } to="/cart" className={({isActive}) => isActive ? classes.active : ''}><span className={classes.header__cart} data-label={items}><i className='bx bx-cart'></i></span> Cart</NavLink>
+          <NavLink to="/" className={({isActive}) => isActive ? classes.active : ''}>Home</NavLink>
+          <NavLink to="/men" className={({isActive}) => isActive ? classes.active : ''}>Men</NavLink>
+          <NavLink to="/women" className={({isActive}) => isActive ? classes.active : ''}>Women</NavLink>
+          <NavLink to="/about" className={({isActive}) => isActive ? classes.active : ''}>About</NavLink>
+          <NavLink to="/cart" className={({isActive}) => isActive ? classes.active : ''}><span className={classes.header__cart} data-label={items}><i className='bx bx-cart'></i></span> Cart</NavLink>
         </nav>
       </div>
     </header>

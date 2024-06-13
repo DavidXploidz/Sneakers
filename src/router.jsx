@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {Routes, Route, HashRouter} from 'react-router-dom'
 import IndexPage from './views/IndexPage'
 import Layout from './layouts/Layout'
 import AboutPage from './views/AboutPage'
@@ -9,7 +9,7 @@ import CartPage from './views/CartPage'
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route element={<Layout />} >
           <Route path='/' element={ <IndexPage /> } index />
@@ -20,6 +20,6 @@ export default function AppRouter() {
           <Route path="product/:id" element={ <Product /> } />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }

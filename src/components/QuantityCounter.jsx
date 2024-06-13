@@ -1,4 +1,6 @@
 import classes from '../styles/Product.module.css'
+import minusIcon from '../assets/svg/minus_icon.svg'
+import plusIcon from '../assets/svg/plus_icon.svg'
 
 export default function QuantityCounter({count, setCount}) {
 
@@ -9,9 +11,9 @@ export default function QuantityCounter({count, setCount}) {
 
   return (
     <div className={classes.counter}>
-        <button onClick={() => decrementCount()}><img src="/src/assets/svg/minus_icon.svg" alt="icon minus" /></button>
+        <button onClick={() => decrementCount()}><img src={minusIcon} alt="icon minus" /></button>
         <p>{count}</p>
-        <button onClick={() => setCount(count + 1)}><img src="/src/assets/svg/plus_icon.svg" alt="icon plus" /></button>
+        <button onClick={() => setCount(count + 1)}><img src={plusIcon} alt="icon plus" /></button>
     </div>
   )
 }

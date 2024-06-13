@@ -1,6 +1,7 @@
 /* Header styles */
 .header{
     background-color: var(--Gray);
+    box-shadow: var(--shadow)
 }
 .header__content{
     min-height: 90px;

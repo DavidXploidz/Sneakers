@@ -12,7 +12,7 @@
   --PaleOrange: #ffede0;
 
   /* ### Neutral */
-  --VeryDarkBlue: hsl(220, 13%, 13%);
+  --VeryDarkBlue: rgb(29, 32, 37);
   --DarkGrayishBlue: hsl(219, 9%, 45%);
   --GrayishBlue: hsl(220, 14%, 75%);
   --LightGrayishBlue: hsl(223, 64%, 98%);
@@ -112,7 +112,7 @@ hr{
 }
 .grid-responsive{
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(min(350px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(min(300px, 100%), 1fr));
   gap: 1.5rem 2rem;
 }
 .section{

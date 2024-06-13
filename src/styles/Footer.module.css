@@ -1,0 +1,31 @@
+.footer{
+    min-height: 150px;
+    background-color: var(--Gray);
+    background-image: url('../assets/svg/wave_bg.svg');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    width: 100%;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: end;
+    padding-bottom: 10px;
+}
+@media (min-width: 553px){ 
+    .footer{
+        background-repeat: repeat;
+    }
+}
+.footer__content{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.footer__content p{
+    margin-bottom: 0;
+    color: var(--white);
+}
+.footer__content img{
+    filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(6%) hue-rotate(188deg) brightness(107%) contrast(96%);
+}

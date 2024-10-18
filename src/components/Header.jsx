@@ -30,8 +30,8 @@ function Header() {
         <div type="button" onClick={ handleClickMenu } className={classes.header__ham}><i className={`bx bx-${menu ? 'x' : 'menu'}`}></i></div>
         <nav className={`${classes.header__nav} ${menu && classes['header__nav--active']}`}>
           <NavLink to="/" className={({isActive}) => isActive ? classes.active : ''}>Home</NavLink>
-          <NavLink to="/men" className={({isActive}) => isActive ? classes.active : ''}>Men</NavLink>
-          <NavLink to="/women" className={({isActive}) => isActive ? classes.active : ''}>Women</NavLink>
+          <NavLink to="/tvs" className={({isActive}) => isActive ? classes.active : ''}>Tv´s</NavLink>
+          <NavLink to="/cameras" className={({isActive}) => isActive ? classes.active : ''}>Cameras</NavLink>
           <NavLink to="/about" className={({isActive}) => isActive ? classes.active : ''}>About</NavLink>
           <NavLink to="/cart" className={({isActive}) => isActive ? classes.active : ''}><span className={classes.header__cart} data-label={items}><i className='bx bx-cart'></i></span> Cart</NavLink>
         </nav>

@@ -31,14 +31,14 @@ function Slider() {
         >
         {isLoading ? <Spinner /> : (
             products.slice(6,12).map(product => (
-                <SwiperSlide key={product.id}>
+                <SwiperSlide key={product.sku}>
                     <div className={classes.sliderContainer}>
                         <div className={classes.sliderContent}>
-                            <h1 className={classes.title}>{product.title}</h1>
-                            <p className={classes.price}>{product.base_price} {product.currency}</p>
+                            <h1 className={classes.title}>{product.name}</h1>
+                            <p className={classes.price}>{product.salePrice} USD</p>
                         </div>
                         <figure>
-                            <img src={product.image} alt={`Image ${product.title}`} />
+                            <img src={product.image} alt={`Image ${product.name}`} />
                         </figure>
                     </div>
                 </SwiperSlide>

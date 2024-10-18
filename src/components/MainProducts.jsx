@@ -7,9 +7,9 @@ function MainProducts() {
   return (
     <div className='grid-responsive'>
         {isLoading ? <Spinner /> : (
-            products.map(product => {
+            products.map((product, index) => {
                 return(
-                    <CardProduct key={product.id} product={product} addToCart={addToCart} />
+                    <CardProduct key={product.sku} product={product} addToCart={addToCart} />
                 )
             })
         )}

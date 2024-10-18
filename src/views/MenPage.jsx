@@ -12,19 +12,35 @@ export default function MenPage() {
     useEffect(() => {
         getDataApi()
     },[])
-
+    
     const getDataApi = async () => {
-        const url = 'https://api.stockx.vlour.me/search?query=Men';
+        const apiKey = 'zXU8tS8PXNyDgijFGV77FQ7E';
+        const url = `https://api.bestbuy.com/v1/products((categoryPath.id=abcat0101000))?apiKey=${apiKey}&sort=salePrice.asc&show=name,salePrice,description,image,condition,url,sku&pageSize=20&format=json`;
+      
         try {
-            setIsLoading(true)
-            const response = await fetch(url);
-            const resultado = await response.json();
-            setProducts(resultado.hits);
-            setIsLoading(false)
+          setIsLoading(true);
+          const response = await fetch(url);
+      
+          if (!response.ok) {
+            throw new Error(`API request failed with status: ${response.status}`);
+          }
+      
+          const resultado = await response.json();
+      
+          if (!resultado) {
+            console.warn('Not found');
+            // Handle no product found scenario (optional: set empty state or display message)
+          }
+      
+          const data = resultado.products; 
+          setProducts(data);
         } catch (error) {
-            console.log(error);
+          console.error('Error fetching product data:', error);
+          // Handle API errors gracefully (optional: display error message)
+        } finally {
+          setIsLoading(false);
         }
-    }
+    };
 
   return (
     <div>
@@ -34,7 +50,7 @@ export default function MenPage() {
                 {isLoading ? <Spinner /> : (
                     products.map(product => {
                         return (
-                            <CardProduct key={product.id} product={product} addToCart={addToCart} />
+                            <CardProduct key={product.sku} product={product} addToCart={addToCart} />
                         )
                     })
                 )}

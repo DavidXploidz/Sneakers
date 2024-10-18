@@ -18,7 +18,7 @@ export default function CartPage() {
   const isEmpty = cart.length <= 0;
 
   const handleClickDelete = (id) => {
-    const newArray = cart.filter(item => item.id !== id);
+    const newArray = cart.filter(item => item.sku !== id);
     setCart(newArray)
     localStorage.setItem('sneakers-cart', JSON.stringify(newArray));
     toast.error('Item deleted from Cart', {
@@ -40,7 +40,7 @@ export default function CartPage() {
 
   const handleClickUpdate = (id) => {
     const updatedCart = cart.map(item => {
-      if (item.id === id) {
+      if (item.sku === id) {
         return { ...item, quantity: count }; // Cantidad actualizada
       } else {
         return item;
@@ -61,7 +61,7 @@ export default function CartPage() {
     });
   }
 
-  const cartTotal = useMemo(() => cart.reduce((total, item ) => total + (item.quantity * item.base_price), 0), [cart])
+  const cartTotal = useMemo(() => cart.reduce((total, item ) => total + (item.quantity * item.salePrice), 0), [cart])
 
   return (
     <div className='container section'>
@@ -75,27 +75,27 @@ export default function CartPage() {
           <div className={classes.cart__box}>
             <div className={classes.cart__resume}>
               {cart.map(item => (
-                <article className={classes.cart__item} key={item.id}>
+                <article className={classes.cart__item} key={item.sku}>
                   <figure>
                     <ImageComponent src={item.image} width={130} height={100}  />
                   </figure>
                   <section>
-                    <p className={classes.title}>{item.title}</p>
+                    <p className={classes.title}>{item.name}</p>
                     <div className={classes.space}>
-                      {edit.editing === item.id ? (
+                      {edit.editing === item.sku ? (
                         <>
                           <QuantityCounter count={count} setCount={setCount} />
                         </>
                       ) : (
-                        <p className={classes.price}>$ {item.base_price} <span className={classes.quantity}>x {item.quantity}</span></p>
+                        <p className={classes.price}>$ {item.salePrice} <span className={classes.quantity}>x {item.quantity}</span></p>
                       )}
                       <div className={classes.buttons}>
-                      {edit.editing === item.id ? (
-                        <button className={classes.save} onClick={() => handleClickUpdate(item.id) }><i className='bx bx-save'></i></button>
+                      {edit.editing === item.sku ? (
+                        <button className={classes.save} onClick={() => handleClickUpdate(item.sku) }><i className='bx bx-save'></i></button>
                       ): (
-                        <button className={classes.edit} onClick={() => handleClickEdit(item.id, item.quantity) }><i className='bx bx-edit'></i></button>
+                        <button className={classes.edit} onClick={() => handleClickEdit(item.sku, item.quantity) }><i className='bx bx-edit'></i></button>
                       )}
-                        <button className={classes.delete} onClick={() => handleClickDelete(item.id)}><i className='bx bx-trash'></i></button>
+                        <button className={classes.delete} onClick={() => handleClickDelete(item.sku)}><i className='bx bx-trash'></i></button>
                       </div>
                     </div>
                   </section>

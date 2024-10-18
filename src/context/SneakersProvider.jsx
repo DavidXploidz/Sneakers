@@ -15,27 +15,42 @@ const SneakersProvider = ({children}) => {
     },[])
 
     const consultarApi = async () => {
-        const url = 'https://api.stockx.vlour.me/search?query=Shoes';
+        const apiKey = 'zXU8tS8PXNyDgijFGV77FQ7E';
+        const url = `https://api.bestbuy.com/v1/products((categoryPath.id=abcat0502000))?apiKey=${apiKey}&sort=salePrice.desc&show=name,salePrice,description,image,condition,url,sku&pageSize=20&format=json`;
+      
         try {
-            setIsLoading(true)
-            const response = await fetch(url);
-            const resultado = await response.json();
-            const data = resultado.hits;
-            setProducts(data);
-            setIsLoading(false)
+          setIsLoading(true);
+          const response = await fetch(url);
+      
+          if (!response.ok) {
+            throw new Error(`API request failed with status: ${response.status}`);
+          }
+      
+          const resultado = await response.json();
+      
+          if (!resultado) {
+            console.warn('Not found');
+            // Handle no product found scenario (optional: set empty state or display message)
+          }
+      
+          const data = resultado.products; 
+          setProducts(data);
         } catch (error) {
-            console.log(error);
+          console.error('Error fetching product data:', error);
+          // Handle API errors gracefully (optional: display error message)
+        } finally {
+          setIsLoading(false);
         }
-    }
+    };
 
     function addToCart(product, count = 1) {
         const updatedProduct = { ...product, quantity: count };
-        const elementIndex = cart.findIndex(item => item.id === product.id);
+        const elementIndex = cart.findIndex(item => item.sku === product.sku);
     
         let updatedCart;
         if (elementIndex >= 0) {
             updatedCart = cart.map(item => 
-                item.id === product.id 
+                item.sku === product.sku 
                     ? { ...item, quantity: item.quantity + count } 
                     : item
             );

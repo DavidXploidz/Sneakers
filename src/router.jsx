@@ -14,8 +14,8 @@ export default function AppRouter() {
         <Route element={<Layout />} >
           <Route path='/' element={ <IndexPage /> } index />
           <Route path='about' element={ <AboutPage /> } />
-          <Route path="women" element={ <WomenPage /> } />
-          <Route path="men" element={ <MenPage /> } />
+          <Route path="cameras" element={ <WomenPage /> } />
+          <Route path="tvs" element={ <MenPage /> } />
           <Route path="cart" element={ <CartPage /> } />
           <Route path="product/:id" element={ <Product /> } />
         </Route>

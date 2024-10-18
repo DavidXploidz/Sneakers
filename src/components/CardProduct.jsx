@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'
 
 function CardProduct({ product, addToCart }) {
 
-  const { id, image, title, base_price, currency } = product
+  const { sku, image, name, salePrice } = product
 
   return (
     <article className={classes.card} >
-      <Link to={`/product/${id}`}>
+      <Link to={`/product/${sku}`}>
         <ImageComponent src={image} width={300} height={185} />
       </Link>
-      <h3 className={classes.card__title}>{title}</h3>
+      <h3 className={classes.card__title}>{name}</h3>
       <div className={classes.card__bottom}>
-        <p className={classes.card__price}>{base_price} {currency}</p>
+        <p className={classes.card__price}>{salePrice} USD</p>
         <button className={classes.card__button} onClick={() => addToCart(product)}>Add to Cart</button>
       </div>
     </article>

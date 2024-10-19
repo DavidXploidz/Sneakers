@@ -5,7 +5,6 @@
     grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
 }
 .about__main{
-    padding-inline: min(2vw, 2rem);
     align-self: center;
 }
 .about__title{

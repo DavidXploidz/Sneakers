@@ -8,12 +8,12 @@
     padding-inline: 1rem;
 }
 .banner--women{
-    color: #a3115a;
-    background-color: #fdcded;
+    background-color: #E3E4E5;
+    color: var(--VeryDarkBlue);
 }
 .banner--men{
-    background-color: #cef8ff;
-    color: #144a65;
+    background-color: #E3E4E5;
+    color: var(--VeryDarkBlue);
 }
 .banner__title{
     font-size: var(--step-3);

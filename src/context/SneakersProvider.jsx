@@ -15,7 +15,7 @@ const SneakersProvider = ({children}) => {
     },[])
 
     const consultarApi = async () => {
-        const apiKey = 'zXU8tS8PXNyDgijFGV77FQ7E';
+        const apiKey = import.meta.env.VITE_API_KEY;
         const url = `https://api.bestbuy.com/v1/products((categoryPath.id=abcat0502000))?apiKey=${apiKey}&sort=salePrice.desc&show=name,salePrice,description,image,condition,url,sku&pageSize=20&format=json`;
       
         try {

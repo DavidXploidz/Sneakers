@@ -34,7 +34,7 @@ function Slider() {
                 <SwiperSlide key={product.sku}>
                     <div className={classes.sliderContainer}>
                         <div className={classes.sliderContent}>
-                            <h1 className={classes.title}>{product.name}</h1>
+                            <h1 className={classes.title}>{product.name.split('-').slice(0, 2).map(part => part.trim()).join(' - ')}</h1>
                             <p className={classes.price}>{product.salePrice} USD</p>
                         </div>
                         <figure>
